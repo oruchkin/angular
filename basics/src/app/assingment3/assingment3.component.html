@@ -1,0 +1,16 @@
+<hr>
+
+<button class="btn btn-primary"
+        (click)="changeVisability()"
+        >Display Details</button>
+<p [hidden]="passwordHidden">Secret Password = "phoenix"</p>
+<p *ngIf="passwordHidden">Secret Password = "phoenix"</p>
+
+<!--<p [ngStyle]="{'background-color': log > 4 ? 'blue' : 'transparent'}"-->
+<!--   [ngClass]="{whitecolor: log > 4}"-->
+<!--   *ngFor="let log of buttonLogger">{{log}}</p>-->
+
+<p [ngStyle]="{'background-color': i > 4 ? 'blue' : 'transparent'}"
+   [ngClass]="{whitecolor: i > 4}"
+   *ngFor="let log of buttonLogger; let i = index;">{{log}}</p>
+
