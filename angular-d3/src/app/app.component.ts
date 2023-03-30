@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mat';
-
-  dateChaged(event: any){
-    console.log(event)
-    console.log(event.target.value)
-  }
+  title = 'angular-d3';
 }
