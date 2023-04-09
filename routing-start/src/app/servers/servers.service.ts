@@ -1,3 +1,9 @@
+export interface Server {
+  id: number;
+  name: string;
+  status: string;
+}
+
 export class ServersService {
   private servers = [
     {
@@ -21,7 +27,9 @@ export class ServersService {
     return this.servers;
   }
 
-  getServer(id: number) {
+
+
+  getServer(id: number): {id: number, name: string, status: string } {
     const server = this.servers.find(
       (s) => {
         return s.id === id;
@@ -29,8 +37,14 @@ export class ServersService {
     );
     return server;
   }
+  //
+  // getServer(id: number): Server | null {
+  //   const server = this.servers.find(s => s.id === id);
+  //   return server?.id ? server : null;
+  // }
 
-  updateServer(id: number, serverInfo: {name: string, status: string}) {
+
+  updateServer(id: number, serverInfo: { name: string, status: string }) {
     const server = this.servers.find(
       (s) => {
         return s.id === id;
