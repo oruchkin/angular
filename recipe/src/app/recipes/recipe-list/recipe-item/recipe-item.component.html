@@ -1,7 +1,8 @@
-<a href="#"
-   (click)="onSelected()"
-   class="list-group-item clearfix "
-   style="border: 1px solid grey;">
+<a
+   class="list-group-item clearfix"
+   routerLinkActive="active"
+   [routerLink]="[index]"
+   style="border: 1px solid grey; cursor: pointer">
   <div class="float-left ">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
     <p class="list-group-item-text">{{ recipe.description }}</p>
