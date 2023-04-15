@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HistogramComponent } from './histogram/histogram.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    HistogramComponent,
   ],
   imports: [
     BrowserModule,
