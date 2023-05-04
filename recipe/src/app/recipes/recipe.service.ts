@@ -8,22 +8,23 @@ import { Subject } from "rxjs";
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe('Tasty Schnitzel',
-      'A super tasty shnitzel, awesome',
-      'https://vsemrecept.ru/wp-content/uploads/2017/07/%D1%88%D0%BD%D0%B8%D1%86%D0%B0%D0%BD%D1%8F%D0%BC%D0%B0.jpg',
-      [
-        new Ingredient('Meat', 3),
-        new Ingredient('French Fries', 22)
-      ]),
-    new Recipe('Burger',
-      'It is so unhealthy, but taste good',
-      'https://s3.eu-central-1.amazonaws.com/www.burgerking.com.mx/wp-content/uploads/sites/3/2021/02/24095839/1200x800_13_XTreme-1-1.png',
-      [
-        new Ingredient('Buns', 2),
-        new Ingredient('Big meat', 5)
-      ])
-  ];
+  // private recipes: Recipe[] = [
+  //   new Recipe('Tasty Schnitzel',
+  //     'A super tasty shnitzel, awesome',
+  //     'https://vsemrecept.ru/wp-content/uploads/2017/07/%D1%88%D0%BD%D0%B8%D1%86%D0%B0%D0%BD%D1%8F%D0%BC%D0%B0.jpg',
+  //     [
+  //       new Ingredient('Meat', 3),
+  //       new Ingredient('French Fries', 22)
+  //     ]),
+  //   new Recipe('Burger',
+  //     'It is so unhealthy, but taste good',
+  //     'https://s3.eu-central-1.amazonaws.com/www.burgerking.com.mx/wp-content/uploads/sites/3/2021/02/24095839/1200x800_13_XTreme-1-1.png',
+  //     [
+  //       new Ingredient('Buns', 2),
+  //       new Ingredient('Big meat', 5)
+  //     ])
+  // ];
+  private recipes: Recipe[] = [];
 
   constructor(private slService: ShoppingListService) {
   }
@@ -52,6 +53,11 @@ export class RecipeService {
 
   deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice())
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
     this.recipesChanged.next(this.recipes.slice())
   }
 
