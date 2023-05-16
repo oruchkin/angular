@@ -2,21 +2,28 @@
   <div class="container-fluid">
 
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Recipe Book</a>
+      <a class="navbar-brand" routerLink="/recipes">Recipe Book</a>
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto">
-        <li routerLinkActive="active" >
-          <a class="nav-link" routerLink="/recipes">Recipes</a>
+        <li routerLinkActive="active" *ngIf="isAuthenticated">
+          <a class="nav-link" routerLink="/recipes" >Recipes</a>
         </li>
-        <li routerLinkActive="active" >
+        <li routerLinkActive="active" *ngIf="!isAuthenticated">
+          <a class="nav-link" routerLink="/auth">Authenticate</a>
+        </li>
+        <li routerLinkActive="active">
           <a class="nav-link" routerLink="/shopping-list">Shopping List</a>
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" type="button" id="dropdownNav" data-toggle="dropdown" >
-        <li class="dropdown">
+      <ul class="nav navbar-nav navbar-right" data-toggle="dropdown" id="dropdownNav" type="button">
+        <li *ngIf="isAuthenticated">
+          <a  class="nav-link" (click)="onLogout()" style="cursor: pointer;">Logout</a>
+        </li>
+
+        <li *ngIf="isAuthenticated" class="dropdown">
           <a style="cursor: pointer;" class="nav-link dropdown-toggle" role="button">Manage <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" (click)="onSaveData()" style="cursor: pointer;">Save data</a></li>
